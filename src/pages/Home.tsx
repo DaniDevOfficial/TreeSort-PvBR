@@ -1,11 +1,11 @@
-import React from 'react'
-import { Landing } from '../components/Landing'
+
+import { LabyrinthDisplay } from '../components/LabyrinthDisplay'
 
 export function HomePage() {
 
     return (
         <>
-            <Landing />
+            <LabyrinthDisplay />
         </>
     )
 }
