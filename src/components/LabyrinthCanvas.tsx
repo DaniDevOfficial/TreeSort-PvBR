@@ -3,11 +3,13 @@ import React, { useEffect } from 'react';
 interface LabyrinthCanvasProps {
     rows: number;
     cols: number;
-    labyrinth: boolean[][];
+    labyrinth: string[][];
 }
 
 export function LabyrinthCanvas({ rows, cols, labyrinth }: LabyrinthCanvasProps) {
-    const cellSize = 20; 
+    const screenWidth = window.innerWidth * 0.8;
+    const screenHeight = window.innerHeight * 0.8;
+    const cellSize = Math.min(screenWidth / cols, screenHeight / rows);
     const canvasWidth = cols * cellSize;
     const canvasHeight = rows * cellSize;
 
@@ -20,8 +22,20 @@ export function LabyrinthCanvas({ rows, cols, labyrinth }: LabyrinthCanvasProps)
 
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
-                    if (labyrinth[i][j]) {
-                        // Draw wall
+                    if (labyrinth[i][j] === 'wall') {
+                        ctx.fillStyle = 'black';
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    }
+                    if (labyrinth[i][j] === 'fastest') {
+                        ctx.fillStyle = 'green';
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    }
+                    if(labyrinth[i][j] === 'goal') {
+                        ctx.fillStyle = 'red';
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    }
+                    if(labyrinth[i][j] === 'start') {
+                        ctx.fillStyle = 'blue';
                         ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
                     }
                 }
@@ -44,22 +58,5 @@ export function LabyrinthCanvas({ rows, cols, labyrinth }: LabyrinthCanvasProps)
         ></canvas>
     );
 
-    const drawCanvas = (canvas: HTMLCanvasElement) => {
-        if (canvas) {
-            const ctx = canvas.getContext('2d');
-            if (ctx) {
-                drawLabyrinth(ctx);
-            }
-        }
-    };
-
-    return (
-        <canvas
-            ref={drawCanvas}
-            width={canvasWidth}
-            height={canvasHeight}
-            style={{ border: '1px solid black' }}
-        ></canvas>
-    );
-};
+}
 
