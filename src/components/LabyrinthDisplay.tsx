@@ -156,7 +156,6 @@ export function LabyrinthDisplay() {
                 <Input id="probabilityInput" type="number" step="0.01" min="0" max="0.5" value={wallProbability} onChange={handleWallProbabilityChange} />
             </FormControl>
             <Button onClick={generatePossibleLabirynth}>Generate Labyrinth</Button>
-            <Button onClick={findFastestPath}>Fastest Path</Button>
             <LabyrinthCanvas rows={rows} cols={cols} labyrinth={labyrinth} />
         </Box>
     );

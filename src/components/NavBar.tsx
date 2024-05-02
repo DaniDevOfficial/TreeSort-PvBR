@@ -27,7 +27,6 @@ import {
         zIndex={1232}
         py="3"
         px="5"
-        backgroundColor={"rgba(255, 255, 255, 0.8)"}
         sx={{
           
           backdropFilter: "blur(10px)",

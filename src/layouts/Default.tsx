@@ -9,7 +9,6 @@ export function DefaultLayout() {
     const links = [
         { name: "Normal Solver", href: "/" },
         { name: "Step By Step Solve", href: "/stepbystep" },
-        { name: "Contact", href: "/contact" },
     ];
 
     return (
