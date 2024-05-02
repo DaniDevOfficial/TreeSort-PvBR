@@ -23,23 +23,29 @@ export function LabyrinthCanvas({ rows, cols, labyrinth }: LabyrinthCanvasProps)
             for (let i = 0; i < rows; i++) {
                 for (let j = 0; j < cols; j++) {
                     if (labyrinth[i][j] === 'wall') {
-                        ctx.fillStyle = 'black';
+                        ctx.fillStyle = '#150109';
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    } else if (labyrinth[i][j] === 'fastest') {
+                        ctx.fillStyle = '#F91979'; 
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    } else if (labyrinth[i][j] === 'goal') {
+                        ctx.fillStyle = '#FA894F';  
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    } else if (labyrinth[i][j] === 'start') {
+                        ctx.fillStyle = '#5bc0be'; 
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    } else if (labyrinth[i][j] === 'visited') {
+                        ctx.fillStyle = '#F9D423'; 
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
+                    } else {
+                        ctx.fillStyle = '#FFF1F6';
                         ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
                     }
-                    if (labyrinth[i][j] === 'fastest') {
-                        ctx.fillStyle = 'green';
-                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
-                    }
-                    if(labyrinth[i][j] === 'goal') {
-                        ctx.fillStyle = 'red';
-                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
-                    }
-                    if(labyrinth[i][j] === 'start') {
-                        ctx.fillStyle = 'blue';
-                        ctx.fillRect(j * cellSize, i * cellSize, cellSize, cellSize);
-                    }
+
+                    
                 }
             }
+
         };
 
         const canvas = document.getElementById('labyrinth-canvas') as HTMLCanvasElement;

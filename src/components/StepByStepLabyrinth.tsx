@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { LabyrinthCanvas } from './LabyrinthCanvas';
 import { Button, Box, Heading, Text, Input, FormControl, FormLabel } from '@chakra-ui/react';
-export function LabyrinthDisplay() {
+export function StepByStepLabyrinth() {
     const [rows, setRows] = useState(5);
     const [cols, setCols] = useState(5);
     const [wallProbability, setWallProbability] = useState(0.3);
     const [labyrinth, setLabyrinth] = useState([]);
     const [faststestPath, setFaststestPath] = useState([]);
+    const [step, setStep] = useState(0);
     useEffect(() => {
         generateLabyrinth();
     }, []);
@@ -84,60 +85,52 @@ export function LabyrinthDisplay() {
 
 
     function findFastestPath(labyrinth) {
-        const rows = labyrinth.length; // Anzahl der Zeilen im Labyrinth
-        const cols = labyrinth[0].length; // Anzahl der Spalten im Labyrinth
+        const rows = labyrinth.length;
+        const cols = labyrinth[0].length;
 
-        // Initialisiere ein 2D-Array, um zu verfolgen, welche Zellen bereits besucht wurden
         const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
-        // Erstelle eine Warteschlange für die Breitensuche
         const queue = [];
-        // Startpunkt mit dem Startpfad zur Warteschlange hinzufügen
-        const start = { x: 0, y: 0, path: [{ x: 0, y: 0 }] };
+        const start = { x: 0, y: 0, path: [{ x: 0, y: 0 }] }; // Include starting point in the initial path
         queue.push(start);
-
-        // Solange die Warteschlange nicht leer ist
         while (queue.length > 0) {
-            // Entferne das erste Element aus der Warteschlange
             const { x, y, path } = queue.shift();
-
-            // Überprüfe, ob der aktuelle Punkt das Ziel ist (unterste rechte Ecke des Labyrinths)
             if (x === cols - 1 && y === rows - 1) {
-                // Markiere den gefundenen Pfad im Labyrinth und gib ihn zurück
-                const markedPath = markPath(labyrinth, path);
+                const markedPath = markPath(labyrinth, visited);
                 return markedPath;
             }
-
-            // Überprüfe die Nachbarzellen des aktuellen Punktes
+            
             if (x >= 0 && x < cols && y >= 0 && y < rows && !visited[y][x] && labyrinth[y][x] === 'path') {
-                // Markiere die aktuelle Zelle als besucht
                 visited[y][x] = true;
-
-                // Füge benachbarte Zellen mit aktualisiertem Pfad zur Warteschlange hinzu
-                queue.push({ x: x - 1, y, path: path.concat({ x: x - 1, y }) }); // Bewegung nach links
-                queue.push({ x: x + 1, y, path: path.concat({ x: x + 1, y }) }); // Bewegung nach rechts
-                queue.push({ x, y: y - 1, path: path.concat({ x, y: y - 1 }) }); // Bewegung nach oben
-                queue.push({ x, y: y + 1, path: path.concat({ x, y: y + 1 }) }); // Bewegung nach unten
+                // Add adjacent cells to the queue with updated path
+                queue.push({ x: x - 1, y, path: path.concat({ x: x - 1, y }) }); // Move left
+                queue.push({ x: x + 1, y, path: path.concat({ x: x + 1, y }) }); // Move right
+                queue.push({ x, y: y - 1, path: path.concat({ x, y: y - 1 }) }); // Move up
+                queue.push({ x, y: y + 1, path: path.concat({ x, y: y + 1 }) }); // Move down
             }
+
         }
 
-        // Falls kein Pfad gefunden wurde, gib ein leeres Array zurück
+        // If no path is found
         return [];
     }
 
 
-    function markPath(labyrinth, path) {
+    function markPath(labyrinth, visited) {
 
-        path.forEach(({ x, y }) => {
-            labyrinth[y][x] = 'fastest';
+        visited.forEach((row, y) => {
+            row.forEach((isVisited, x) => {
+                if (isVisited) {
+                    labyrinth[y][x] = 'visited';
+                }
+            });
         });
-
         console.log(labyrinth)
 
         labyrinth[0][0] = 'start'; // Mark the start point as fastest path
         labyrinth[labyrinth.length - 1][labyrinth[0].length - 1] = 'goal'; // Mark the goal as fastest path
         return labyrinth;
     }
-    
+
     return (
         <Box
         >
@@ -156,7 +149,6 @@ export function LabyrinthDisplay() {
                 <Input id="probabilityInput" type="number" step="0.01" min="0" max="0.5" value={wallProbability} onChange={handleWallProbabilityChange} />
             </FormControl>
             <Button onClick={generatePossibleLabirynth}>Generate Labyrinth</Button>
-            <Button onClick={findFastestPath}>Fastest Path</Button>
             <LabyrinthCanvas rows={rows} cols={cols} labyrinth={labyrinth} />
         </Box>
     );
