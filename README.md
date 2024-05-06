@@ -1,98 +1,51 @@
-Certainly! Here's the updated README with a note advising users to change the package name:
+# Treetraversal
 
----
+Treetraversal wird verwendet um alle Knoten eines Baumes zu besuchen. Es gibt verschiedene Methoden um dies zu tun. In diesem Projekt wird nur die Breiten suche Implementiert. Es gibt zu dem ganzen auch ein Video auf Youtube: https://www.youtube.com/watch?v=7uQcJ0fYBdM.
 
-# Vite Template
-
-This is a template project set up with Vite for rapid development using React, Chakra UI, and React Router DOM.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js (version >= 14.0.0)
-- npm (version >= 7.0.0)
-
-### Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/your-username/vitetemplate.git
-   ```
-
-2. Navigate to the project directory:
-
-   ```bash
-   cd vitetemplate
-   ```
-
-3. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-
-### Or use it as a GitHub Template
-
-### Development
-
-To start the development server, run:
+## Instalierung 
 
 ```bash
-npm run dev
+npm install
+
+npm start
 ```
 
-This will start the Vite development server and open your default web browser to http://localhost:5174.
+## Was ist Tree Traversal?
 
-### Building for Production
+Treetraversal wird verwendet um alle Knoten eines Baumes zu besuchen. Es gibt verschiedene Methoden um dies zu tun.
 
-To build the project for production, run:
+### Breitensuche
 
-```bash
-npm run build
+Die Breitensuche ist eine Methode um alle Knoten eines Baumes zu besuchen. Dabei wird zuerst der Wurzelknoten besucht und dann die Kinder des Wurzelknotens. Danach werden die Kinder der Kinder besucht. Dies wird so lange gemacht bis alle Knoten besucht wurden.
+
+![Breitensuche](/assets/breitensuche.png)
+
+
+Wir haben dafür den Algorithmus mit JavaScript implementiert.
+
+```js
+
 ```
 
-This will compile TypeScript files and generate a production-ready bundle in the `dist` directory.
+Um das ganze besser im Frontend darstellen zu können haben wir noch eine Simple Markierfunktion geschrieben, welche  den schnellsten pfad markiert. 
 
-
-### Preview
-
-To preview the production build locally, run:
-
-```bash
-npm run preview
+```js
+    
 ```
+### Tiefensuche
 
-This will serve the production build locally using Vite's preview server.
+Die Tiefensuche ist eine Methode um alle Knoten eines Baumes zu besuchen. Dabei wird zuerst der Wurzelknoten besucht und dann die Kinder des Wurzelknotens. Danach werden die Kinder der Kinder besucht. Dies wird so lange gemacht bis alle Knoten besucht wurden.
 
-## Note
+![Tiefensuche](/assets/tiefensuche.png)
 
-**Important:** Before using this template, make sure to change the name of the package in the `package.json` file to your desired project name. Afther that you can run npm i and play around in your new environement. 
- 
-## Dependencies
 
-- [@chakra-ui/icons](https://www.npmjs.com/package/@chakra-ui/icons)
-- [@chakra-ui/react](https://www.npmjs.com/package/@chakra-ui/react)
-- [react](https://www.npmjs.com/package/react)
-- [react-dom](https://www.npmjs.com/package/react-dom)
-- [react-icons](https://www.npmjs.com/package/react-icons)
-- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+## Webseite 
 
-## Dev Dependencies
+Die Webseite ist unter folgendem Link erreichbar: https://treetraversal.vercel.app/
 
-- [@types/react](https://www.npmjs.com/package/@types/react)
-- [@types/react-dom](https://www.npmjs.com/package/@types/react-dom)
-- [@typescript-eslint/eslint-plugin](https://www.npmjs.com/package/@typescript-eslint/eslint-plugin)
-- [@typescript-eslint/parser](https://www.npmjs.com/package/@typescript-eslint/parser)
-- [@vitejs/plugin-react](https://www.npmjs.com/package/@vitejs/plugin-react)
-- [eslint](https://www.npmjs.com/package/eslint)
-- [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks)
-- [eslint-plugin-react-refresh](https://www.npmjs.com/package/eslint-plugin-react-refresh)
-- [typescript](https://www.npmjs.com/package/typescript)
-- [vite](https://www.npmjs.com/package/vite)
+![Webseite](/assets/webseite.png)
 
-## License
+Auf der Webseite kann man angeben, wie viele Zeilen und Spalten das Labyrinth haben muss und die warscheindlichkeit, dass ein Feld blockiert ist. Danach kann man ein Labyrinth generieren und sieht sofort den schnellsten Pfad, welcher mit der Breitensuche gefunden wurde.
 
-Just use it man
+
+### Mitglieder und Journale, sowie Zeitplan hier: (Justin macht das Readme fertig)
