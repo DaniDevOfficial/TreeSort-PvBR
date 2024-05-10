@@ -1,6 +1,6 @@
 # Treetraversal
 
-Treetraversal wird verwendet um alle Knoten eines Baumes zu besuchen. Es gibt verschiedene Methoden um dies zu tun. In diesem Projekt wird nur die Breiten suche Implementiert. Es gibt zu dem ganzen auch ein Video auf Youtube: https://www.youtube.com/watch?v=7uQcJ0fYBdM.
+Treetraversal wird verwendet um alle Knoten eines Baumes zu besuchen. Es gibt verschiedene Methoden um dies zu tun. In diesem Projekt wird nur die Breiten suche Implementiert. Es gibt zu dem ganzen auch ein Video auf Youtube: https://www.youtube.com/watch?v=owwP--dGGpkv=7uQcJ0fYBdM.
 
 ## Instalierung 
 

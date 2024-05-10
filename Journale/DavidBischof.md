@@ -5,3 +5,4 @@
 | 02.05.2024     | 2 Stunden | Video und ein wenig Code | Ich habe von Aakash den eingesprochenen Text herhalten und konnte den Teil für den Code aufnehmen. Ich habe die Website auch etwas aufgebessert.  |
 | 04.05.2024    | 2 Stunden | Video ablauf Fertig und Skript | Ich habe das Video fertig geplant, sowie bei jedem Screen bis auf Wilkommen alle Skripts geschriben. |
 | 06.05.2024 |  1 Stunde  | Readme gemacht | Ich habe das Readme angefange, sodass Justin es beenden kann. |
+| 07-10.05.2024     | 4 Stunden | Video fertig gemacht | Ich habe in der letzten Woche leider nicht darauf geachtet, was ich wann gemacht habe. Ich habe die letzen Teile des Scripts erstellt und diese Aakash gegeben. Ich habe alle Teile des Videos fertig gemacht und habe jegliche Quellen, welche wir verwendet haben in der Videobeschreibung angegeben.  |
